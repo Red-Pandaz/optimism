@@ -49,6 +49,8 @@ import { IWETH98 } from "src/universal/interfaces/IWETH98.sol";
 import { IGovernanceToken } from "src/governance/interfaces/IGovernanceToken.sol";
 import { ILegacyMessagePasser } from "src/legacy/interfaces/ILegacyMessagePasser.sol";
 import { ISuperchainTokenBridge } from "src/L2/interfaces/ISuperchainTokenBridge.sol";
+import { IEAS } from "src/vendor/eas/IEAS.sol";
+import { ISchemaRegistry } from "src/vendor/eas/ISchemaRegistry.sol";
 
 /// @title Setup
 /// @dev This contact is responsible for setting up the contracts in state. It currently
@@ -111,7 +113,9 @@ contract Setup {
     ISuperchainTokenBridge superchainTokenBridge = ISuperchainTokenBridge(Predeploys.SUPERCHAIN_TOKEN_BRIDGE);
     IOptimismSuperchainERC20Factory l2OptimismSuperchainERC20Factory =
         IOptimismSuperchainERC20Factory(Predeploys.OPTIMISM_SUPERCHAIN_ERC20_FACTORY);
-
+    IEAS eas = IEAS(Predeploys.EAS);
+    ISchemaRegistry schemaRegistry = ISchemaRegistry(Predeploys.SCHEMA_REGISTRY);
+    
     /// @dev Deploys the Deploy contract without including its bytecode in the bytecode
     ///      of this contract by fetching the bytecode dynamically using `vm.getCode()`.
     ///      If the Deploy bytecode is included in this contract, then it will double

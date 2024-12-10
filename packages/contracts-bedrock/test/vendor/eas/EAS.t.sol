@@ -122,7 +122,7 @@ contract EASTest is CommonTest {
     // =============================================================
     //                         TEST STORAGE
     // =============================================================
-    IEAS public eas;
+
     ISchemaRegistry public registry;
     address public sender;
     address public sender2;
